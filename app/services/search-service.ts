@@ -10,7 +10,7 @@ export class SearchService{
     
     constructor(private http: Jsonp){ }
 
-    search(location: string, page: number = 1): Observable {
+    search(location: string, page: number = 1): Observable <any> {
         let searchParams: URLSearchParams = this.getParams();
         
         searchParams.append("page", page.toString());
@@ -23,13 +23,13 @@ export class SearchService{
             .map( data => data.response );
     }
 
-    searchByCoords(latitude, longitude, page: number = 1) : Observable {
+    searchByCoords(latitude, longitude, page: number = 1) : Observable <any> {
         let searchParams: URLSearchParams = this.getParams();
         
         searchParams.append("page", page.toString());
         searchParams.append("centre_point", "" + latitude + "," + longitude);
 
-        const res: Observable<Response> = this.http.get(this._apiUrl, { search: searchParams });
+        const res: Observable<any> = this.http.get(this._apiUrl, { search: searchParams });
         
         return res
             .map( res => res.json() )

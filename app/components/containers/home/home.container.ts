@@ -10,7 +10,6 @@ import { Recent } from '../../../models/recent';
 import { SLocation } from '../../../types/location';
 import { RecentSearchItem } from '../../../types/recent-search-item';
 
-
 declare var module: { id: string; };
 
 @Component({
@@ -42,7 +41,7 @@ export class HomeContainer {
     changeSearchType(type){
         this.searchType = type || 'name';
     }
-    searchSubscribe(obsorver: Observable){
+    searchSubscribe(obsorver: Observable <any>){
         obsorver.subscribe(res => {
             if(res.application_response_code.substr(0, 1) === "1") {
                 if (res.listings.length > 0) {
