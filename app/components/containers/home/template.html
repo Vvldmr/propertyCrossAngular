@@ -1,0 +1,47 @@
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            Use the form below to search for houses to buy.
+            You can search by place-name, postcode, or click 'My location',
+            to search in your current location!
+        </div>
+    </div>
+
+    <div class="row form-search">
+        <div class="col-xs-12 col-md-7">
+            <input id="field_search" type="text" class="form-control" [(ngModel)]="location.name" [placeholder]="searchType==='name' ? 'London...' : '23.123123, 43.993291'" >
+        </div>
+        <div class="col-xs-4 col-md-2">
+            <button id="btn_search"  class="btn btn-default" (click)="search()" [disabled]="!location.name">Go</button>
+        </div>
+        <div class="col-xs-8 col-md-3">
+            <!--<button class="btn btn-default">My locate</button>-->
+            <select id="search_type" (change)="changeSearchType($event.target.value)" class="form-control">
+                <option value="name">Search by city</option>
+                <option value="loc">Search by location</option>
+            </select>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div *ngIf="errorMessage" class="row error-search">
+        <div id="error_search" class="col-xs-12">
+            {{ errorMessage }}
+        </div>
+    </div>
+
+    <div class="row status-search" *ngIf="recentLocations.length">
+        <div class="col-xs-12 status-search--title">
+            Recent search:
+        </div>
+        <div class="col-xs-12 status-search--content">
+            <ul>
+                <li *ngFor="let item of recentLocations; let i = index;" (click)="goFromRecent(i)" data-id="<%- lastSearches[i].id %>">
+                    {{ item.location.name }} ({{ item.results }})
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

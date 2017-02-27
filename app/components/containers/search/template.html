@@ -1,0 +1,28 @@
+<header>
+    <a id="btn_back" routerLink="" class="btn btn-default fl_r" >
+        Back
+    </a>
+    <h2>
+        Search by: <b>{{searchLocation.name}}</b>
+    </h2>
+</header>
+
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12 count-on-page">
+            <span id="count_show_on_page">{{searchResults.length}}</span> of {{totalResults}} matches
+        </div>
+    </div>
+
+    <div id="show_items" *ngIf="searchResults.length" class="row status-search">
+        <list-item *ngFor="let item of searchResults; let i = index" [item]="item" [guid]="i"></list-item>
+    </div>
+
+
+    <div class="load" *ngIf="totalResults > searchResults.length">
+        <button id="load_more_btn" [disabled]="!loadingButtonEnabled()" (click)="loadMore()" class="btn btn-default">Load more...</button>
+    </div>
+
+
+
+</div>

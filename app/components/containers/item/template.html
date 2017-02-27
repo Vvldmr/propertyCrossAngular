@@ -1,0 +1,47 @@
+<header>
+    <a id="btn_back" (click)="back();" class="btn btn-default fl_r" >
+        Back
+    </a>
+    <button (click)="toggleFave()" id="add_fave" class="btn btn-default fl_r" [ngClass]="{ 'btn-warning': _favouritesModel.isInFavourites(model) }" >
+        <span class="glyphicon glyphicon-star"></span>
+    </button>
+    <h2>
+        {{model.title}}
+    </h2>
+</header>
+
+<div class="content">
+    <div class="col-xs-12 house-item">
+        <div class="row">
+            <div class="col-xs-12">
+                <img [src]="model.img_url" alt="" />
+            </div>
+            <br><br>
+            <div class="col-xs-12">
+                <div>
+                    {{model.summary}}
+                </div>
+                <br>
+                <table class="table">
+                    <tr>
+                        <td>Price</td>
+                        <td>{{model.price}} {{model.price_currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bathroom number</td>
+                        <td>{{model.bathroom_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bedroom number</td>
+                        <td>{{model.bedroom_number}}</td>
+                    </tr>
+                    <tr>
+                        <td>Origin page</td>
+                        <td><a [href]="model.origin" target="_blank">Here</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
